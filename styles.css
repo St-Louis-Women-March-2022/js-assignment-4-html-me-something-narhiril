@@ -1,12 +1,20 @@
 .funParagraph{
     color: green;
+    font-size: 12px;
 }
 
 #mainHeading {
     color: red;
+    font-size: 32px;
+}
+
+.commentary > h1, p {
+    color: #E1E1E1;
+
 }
 
 body {
     display: block;
     margin: 8px;
+    background-color: #1b1b1b;
 }

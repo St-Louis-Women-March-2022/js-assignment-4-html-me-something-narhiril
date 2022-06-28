@@ -2,12 +2,110 @@
 <html>
    <head>
       <title>Anna Rusbarsky, Graded Assignment #4</title>
-      <script src="script.js"></script>
+      <link rel="stylesheet" href="styles.css">
+      <!-- <script src="script.js"></script> -->
    </head>
    <body>
-      <h1 id="mainHeading"></h1>
+      <header id="mainHeading">Parallax: A Deck-Building Prototype Post-Mortem</header>
+      <article id="intro" class="commentary">
+         <h1>Beginnings</h1>
+         <p>In 2014, I was taking a traditional game design class at Webster University.  As a final project, 
+            we had to prototype and present a playable game to the class.  I grew up in the 1990's, in the height
+            of the "Pokemon TCG" and "Magic: The Gathering" eras, where collectable card games had a thriving subculture.
+            One of my early memories is from my 10th birthday, opening a Japan-imported Pokemon Fossil set booster pack, shocked 
+            and delighted by the holographic Mew card that emerged like a shining artifact from that sacred plastic reliquary.
+         </p>
+         <p>
+            A somewhat unique property of so-called "deck builder" games is that there are different types and levels of play that 
+            naturally emerge from the game's structure.  Since the collection of individual cards and the assembly of sets of cards into decks 
+            (according to the rules of the game) is part of the game itself, it is possible to participate in the game and surrounding 
+            community without ever playig competitively or even knowing the game's full rules.  Some people will amass cards simply for the 
+            thrill of doing so, creating a whole social barter economy around rare or desirable cards.  Others will desire the competitive 
+            aspects of the game, learning the rules in depth and participating in tournaments or events.
+         </p>  
+         <p>
+            Curated starter sets allow even beginners to jump in and have fun quickly, while community events such as "draft tournaments" 
+            (in which the cards themselves are provided by the event and a series of "draft" rules are applied to allow competitors to build decks from them) 
+            allow even those who can't afford to collect their own sets of highly desirable cards to experience the fun of playing as part of a community.
+         </p>
+         <p>
+            Inspired by the games of my early years, I started work on the ruleset for a new deck-building card game.  Using ideas for an earlier, discontinued 
+            project, I wanted the premise of the game to be a conflict between rival "orders" (players) in a medieval-fantasy type setting.  Each card would repreent 
+            a subject of the player, which they could then add to their deck.  Decks would have limits on how many duplicate cards or cards of the same "rank" were allowed, 
+            forcing less powerful cards to still see play and encouraging players to look for complementary pairings.  
+         </p>
+         <p>
+            The "twist" on this otherwise well-trodden bit of thematic ground was an astrological element, in which the arrangement of the heavenly bodies in 
+            the skies of the game's fictional world would actually play a role in the game.  For example, when a card representing a knight of the "Sanctum" order is 
+            struck, the damage is reduced based on how many celestial bodies are currently in that knight's favored constellation, making the game dynamic in that 
+            certain cards would perform better or even switch roles under certain conditions.  Timing and prediction become important strategic elements.  An early version 
+            of the rules and a few demo cards was plenty good enough for my class demonstration, but I continued working on the game afterwards.
+         </p>
+      </article>
+      <article id="basics" class="commentary">
+         <h1>The&nbsp;Basics</h1>
+         <p>
+            Each player builds a deck according to a ruleset that specifies how many of each type of card they are allowed to include.  At the start of the game, 
+            each player is allowed to start with their highest-ranking card in their hand, and then shuffle their deck and draw 11 more.  Six cards are played, while 
+            six remain in the player's hand.
+         </p>
+         <p>
+            The playing area consists of two rows of three cards for both players.  The first row is the "front line," and is able to interact directly with 
+            the other player's front line.  The "back line," or "castle," can only be hit by the opponent's front line if the entire front line is first removed 
+            from play.  Certain cards (such as "Sanctioned Assassin") can bypass some of these restrictions, while other cards (such as "Militiaman") have wildly 
+            different effects on each line.  In general, the cards on the front line are there to attack the other player's cards and the back line is there for 
+            supporting actions.  There are rules for drawing new cards to the hand, replacing cards that have been defeated, swapping cards between lines, and 
+            swapping undamaged cards in the back line with cards in the player's hand.  The match continues until one player runs out of playable cards or resigns.
+         </p>
+      </article>
+      <article id="nextSteps" class="commentary">
+         <h1>The&nbsp;Layers&nbsp;Build</h1>
+         <p>
+            The astrological element of the game presented a challenge.  Thematically, I wanted it to be predictable, but not <i>perfectly</i> predictable.  Whether this was representative 
+            of the game world's incomplete understanding of celestial movement, a sort of metaphysical consensus-reality effect, or some combination of the two would be 
+            left open to the players' interpretation.  Regardless, I needed to add a system for both tracking the positions of the four "planets" and for determining where 
+            they would be on the next turn.  This necessitated the addition of a board to the game, with tokens to track the celestial bodies.
+         </p>
+         <p>
+            I considered a dice roll for determining motion on the next turn, but felt that it didn't work thematically.  Even if the dice were included and nothing out of the 
+            ordinary occured on all but a small percentage of rolls, it still felt entirely random.  Eventually, I settled on using an entirely seperate deck of cards to determine 
+            the outcome.  This added yet another layer of physical complexity to the game, but came with the advantage of being far more versatile.  The likeliness of any particular 
+            outcome could be controlled by simply adding more of that card, and the card itself could carry special rules that would have been frustrating and time-consuming to attach 
+            to a dice table.  Something about learning the motion of the heavens by drawing a themed card felt a lot more engaging as well.
+         </p>
+         <p>
+            The playable cards themselves also frequently carried special rules.  Some cards had "passive" effects, defined on the card, that would take effect 
+            as long as they were in play.  Playtesters generally liked the complexity that this added, as each card felt "unique," although it made balancing 
+            considerably more difficult.
+         </p>
+      </article>
+      <article id="play" class="commentary">
+         <h1>The&nbsp;End</h1>
+         <p>
+            One core issue with the game involved the "armor" system.  Each card has both a "HP" value (its health, or "hit points") and an "AR" value (its "armor rating").  Armor is simple in concept - 
+            incoming damage is reduced by the AR number, unless it comes from a source that specifically says to modify or ignore that.  It is meant to represent durable cards, like knights, without 
+            simply giving them bloated HP values that are hard to counter.  Unfortunately, with the kinds of numbers involved, the difference between AR 1 and 2 is 
+            fairly dramatic.  The difference between AR 2 and 3 is, gameplay-wise, even more dramatic, as the vast majority of the game's damage-dealing abilities do 4 damage or less.  
+            Upping damage values across the board negatively affects the game in other areas, and lowering armor ratings across the board is not enough to make the threshold of 3 
+            unattainable without removing certain cards that played well with lower armor ratings.  Introducing more cards that could cut or ignore armor was a band-aid solution 
+            that badly limited deckbuilding and never really got to the heart of the problem.
+         </p>
+         <p>
+            Through playtesting, I also came to the conclusion that the game's main victory condition had its own issues.  The game ran very long, as even more experienced 
+            players struggled to break through an entire deck in anything under an hour.  The deck size was already as lean as it reasonably could be, and frustrating situations 
+            in which both players lost their most powerful cards early and were forced to slog it out with their weak ones were too common.  To make the game play faster, cards 
+            needed to be removed from play more quickly, but this made each decision feel less satisfying and made strategies involving certain combinations of cards too difficult 
+            to actually execute.  I was confronted with the reality that <i>Parallax</i> somehow played both too slow and too fast at the same time, and this wasn't an easy problem to 
+            solve at this stage of development.
+         </p>
+         <p>
+            In 2018, I decided not to continue working on the project.  The game could never quite hold the shape that I wanted it to be.  Sadly, what it would take to fix that is, 
+            effectively, an entirely new game.  I haven't ruled out another attempt in the future, but for now, the one and only prototype of the game sits on my shelf - a box of ideas, 
+            some of which worked, some of which didn't.
+         </p>
+      </article>
       <footer>
-         <p id="testP" class="funParagraph">Made for LaunchCode Women+, 2022</p>
+         <p id="testP" class="funParagraph">Made for LaunchCode Women+, &copy; Roxanna Rusbarsky 2022</p>
       </footer>
    </body>
 </html>
