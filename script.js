@@ -2,7 +2,6 @@ function main() {
 
     const canvas = document.getElementById('cardRenderWindow');
     const gl = canvas.getContext('webgl');
-    let time = 0;
 
     if (!gl) {
         document.querySelectorAll('.render').forEach((element) => { element.style.display = "none"; });
@@ -64,4 +63,4 @@ function main() {
 }
 
 
-window.addEventListener('load', main);
+//window.addEventListener('load', main);
