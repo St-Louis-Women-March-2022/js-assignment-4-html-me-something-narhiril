@@ -1,13 +1,14 @@
+/*
 function main() {
 
     const canvas = document.getElementById('cardRenderWindow');
     const gl = canvas.getContext('webgl');
 
-    //if (!gl) {
+    if (!gl) {
         document.querySelectorAll('.render').forEach((element) => { element.style.display = "none"; });
         alert('WebGL content unavailable - your browser or device may not support it.');
         return;
-    //}
+    }
 
     gl.clearColor(0.0, 0.0, 0.0, 1.0);
     gl.clear(gl.COLOR_BUFFER_BIT);
@@ -64,3 +65,5 @@ function main() {
 
 
 window.addEventListener('load', main);
+
+*/
