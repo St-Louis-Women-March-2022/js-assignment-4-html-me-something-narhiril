@@ -58,7 +58,7 @@ function main() {
         renderer.render(scene, camera);
     }
 
-    animate();
+    //animate();
 
 }
 
